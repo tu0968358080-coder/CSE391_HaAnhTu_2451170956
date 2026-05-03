@@ -1,0 +1,41 @@
+.box {
+    width: 300px;
+    padding: 20px;
+    border: 5px solid black;
+    margin-bottom: 20px;
+}
+
+.content-box {
+    box-sizing: content-box; 
+    background-color: lightblue;
+}
+
+.border-box {
+    box-sizing: border-box;
+    background-color: lightgreen;
+}
+.container {
+    width: 1000px;
+    display: flex; 
+    border: 2px solid red;
+}
+
+
+
+.sidebar-left {
+    width: 250px;
+    padding: 15px;
+    background-color: #f0f0f0;
+}
+
+.main-content {
+    width: 500px;
+    padding: 20px;
+    background-color: #ffffff;
+}
+
+.sidebar-right {
+    width: 250px;
+    padding: 15px;
+    background-color: #eeeeee;
+}
