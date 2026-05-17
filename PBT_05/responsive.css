@@ -1,0 +1,197 @@
+/* --- MOBILE FIRST BASE (Mặc định cho < 768px) --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Header & Hamburger */
+.header {
+    background: #333;
+    color: #fff;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav {
+    display: none; /* Ẩn menu trên mobile */
+    width: 100%;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    background: #444;
+}
+
+.nav ul {
+    list-style: none;
+    flex-direction: column;
+}
+
+.nav ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 1rem;
+    border-bottom: 1px solid #555;
+}
+
+.menu-toggle {
+    display: none;
+}
+
+.menu-toggle:checked ~ .nav {
+    display: block;
+}
+
+.hamburger {
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Main Layout Mobile */
+.main-container {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.sidebar, .ads-bar {
+    display: none; /* Ẩn sidebar và ads trên mobile */
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* 1 cột */
+    gap: 15px;
+}
+
+.card {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.card-info {
+    padding: 15px;
+    text-align: center;
+}
+
+.card-info h4 { margin-bottom: 10px; }
+.card-info p { color: #e74c3c; font-weight: bold; }
+.card-info button {
+    margin-top: 10px;
+    padding: 8px 16px;
+    background: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+/* --- TABLET (768px - 1023px) --- */
+@media (min-width: 768px) {
+    body { font-size: 15px; }
+
+    .hamburger { display: none; }
+    
+    .nav {
+        display: block;
+        position: static;
+        width: auto;
+        background: transparent;
+    }
+
+    .nav ul {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .nav ul li a {
+        border-bottom: none;
+    }
+
+    .sidebar {
+        display: block;
+        width: 100%;
+        background: #fff;
+        padding: 15px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+    }
+
+    .filter-group {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .product```-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 cột */
+    }
+}
+
+/* --- DESKTOP (≥ 1024px) --- */
+@media (min-width: 1024px) {
+    body { font-size: 16px; }
+
+    .main-container {
+        flex-direction: row; /* Sidebar - Grid - Ads */
+        gap: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .sidebar {
+        width: 200px;
+        flex-shrink: 0;
+        height: fit-content;
+    }
+
+    .filter-group {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .product-grid {
+        flex-grow: 1;
+        grid-template-columns: repeat(4, 1fr); /* 4 cột */
+    }
+
+    .ads-bar {
+        display: block;
+        width: 180px;
+        background: #ddd;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        font-weight: bold;
+        color: #777;
+    }
+}
