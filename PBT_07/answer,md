@@ -1,1 +1,245 @@
+Câu A1 (5đ) — var / let / const:
+    Đoạn 1:undefined
+    Đoạn 2 :Không chạy được
+    Đoạn 3: Không chạy được do const không thể thay đổi
+    Đoạn 4: số 4 được thêm vào cuối mảng
+    Đoạn 5 : output trong block là 2, ngoài block là 1
+Câu A2 (5đ) — Data Types & Coercion
+    Không chạy code, dự đoán kết quả:
+    console.log(typeof null);              // object
+    console.log(typeof undefined);         // underfined
+    console.log(typeof NaN);              // number
+    console.log("5" + 3);                 // "53"
+    console.log("5" - 3);                 // 2
+    console.log("5" * "3");              // 15
+    console.log(true + true);            // 2
+    console.log([] + []);                // 
+    console.log([] + {});                // [object Object]
+    console.log({} + []);                // [object Object]
+    Sau khi trả lời, chạy code kiểm tra. Giải thích tại sao "5" + 3 và "5" - 3 cho kết quả khác nhau
+    "5"+3="53" do ưu tiên cộng 2 ký tự vì chắc chắn đúng
+    "5"-3=2 do không có phép trừ ký tự nên sẽ chuyển về dạng số
+Câu A3 (5đ) — So sánh == vs ===
+    Dự đoán true hay false:
+
+    console.log(5 == "5");                // true
+    console.log(5 === "5");               // false
+    console.log(null == undefined);       // true
+    console.log(null === undefined);      // false
+    console.log(NaN == NaN);             // false
+    console.log(0 == false);             // true
+    console.log(0 === false);            // false
+    console.log("" == false);            // true
+    Quy tắc: Từ giờ trở đi, bạn nên dùng == hay ===? Tại sao?
+    Nên dung === vì nó đúng với mục đích so sánh về cả giá trị và kiểu dữ liệu
+Câu A4 (5đ) — Truthy & Falsy
+    Liệt kê TẤT CẢ giá trị Falsy trong JavaScript (đọc tài liệu). Sau đó dự đoán kết quả:
+        false
+        0           // zero
+        0n          // BigInt zero
+        ""          // empty string
+        null
+        undefined
+        NaN
+    if ("0") console.log("A");           // In
+    if ("") console.log("B");            // In 
+    if ([]) console.log("C");            // In 
+    if ({}) console.log("D");            // In
+    if (null) console.log("E");          // Không in
+    if (0) console.log("F");             // Không in
+    if (-1) console.log("G");            // In 
+    if (" ") console.log("H");           // In
+Câu A5 — Template Literals
+// Cách 1:
+var greeting = `Xin chào ${name}! Bạn ${age} tuổi.`;
+
+// Cách 2:
+var url = `https://api.example.com/users/${userId}/orders?page=${page}`;
+
+// Cách 3:
+var html = `
+<div class="card">
+    <h2>${title}</h2>
+    <p>${description}</p>
+    <span>Giá: ${price}đ</span>
+</div>`;
+
+Câu C1:
+
+Tìm và sửa TẤT CẢ lỗi trong code sau (có ít nhất 6 lỗi):
+function tinhGiaGiamGia(giaBan, phanTramGiam) {
+    if (phanTramGiam < 0 || phanTramGiam > 100) {
+        return "Phần trăm giảm không hợp lệ"
+    }
+    
+    var giamGia = giaBan * phanTramGiam / 100
+    let giaSauGiam = giaBan - giamGia
+    
+    if (giaSauGiam = 0) {
+        console.log("Sản phẩm miễn phí!")
+    }
+    
+    return giaSauGiam
+}
+
+// Test
+const gia = tinhGiaGiamGia("100000", 20)
+console.log("Giá sau giảm: " + gia + "đ")
+
+const gia2 = tinhGiaGiamGia(50000, 110)
+console.log("Giá: " + gia2)
+
+for (var i = 0; i < 5; i++) {
+    setTimeout(function() {
+        console.log("Item " + i)
+    }, 1000)
+}
+
+Tìm lỗi và sửa
+Code sai:
+
+1. if (giaSauGiam = 0)
+= là phép gán, không phải so sánh
+giaSauGiam = 0
+biến bị gán thành 0
+
+Sửa:
+if (giaSauGiam === 0)
+
+2. giaBan truyền vào là string
+Code:
+const gia = tinhGiaGiamGia("100000", 20)
+"100000" là chuỗi.
+
+JS có thể tự ép kiểu khi nhân/chia, nhưng không nên phụ thuộc ép kiểu ngầm 
+
+Sửa
+Truyền number:
+const gia = tinhGiaGiamGia(100000, 20)
+
+3. Thiếu validate kiểu dữ liệu
+Hàm chưa kiểm tra:
+giaBan có phải số không
+phanTramGiam có phải số không
+Ví dụ:
+
+tinhGiaGiamGia("abc", 20)
+sẽ ra NaN
+
+Sửa:
+if (isNaN(giaBan) || isNaN(phanTramGiam)) {
+    return "Input không hợp lệ";
+}
+4. Không kiểm tra giá bán âm
+Ví dụ:
+tinhGiaGiamGia(-1000, 20)
+không hợp lý
+
+Sửa:
+if (giaBan < 0) {
+    return "Giá bán không hợp lệ";
+}
+5. Dùng var thay vì let
+
+Code:
+var giamGia = giaBan * phanTramGiam / 100
+var có phạm vi function scope, dễ gây bug
+Nên dùng let hoặc const
+
+Sửa:
+const giamGia = giaBan * phanTramGiam / 100;
+6. Lỗi “ẩn” với var trong vòng lặp + setTimeout
+Code:
+
+for (var i = 0; i < 5; i++) {
+    setTimeout(function() {
+        console.log("Item " + i)
+    }, 1000)
+}
+
+Nhiều người nghĩ sẽ in:
+Item 0
+Item 1
+Item 2
+Item 3
+Item 4
+
+Nhưng thực tế:
+
+Item 5
+Item 5
+Item 5
+Item 5
+Item 5
+
+
+Vì var không có block scope.
+
+Sau khi vòng lặp kết thúc:
+
+i = 5
+
+setTimeout() chạy sau 1 giây nên tất cả callback đều dùng cùng biến i.
+
+Cách sửa bằng let
+for (let i = 0; i < 5; i++) {
+    setTimeout(function() {
+        console.log("Item " + i)
+    }, 1000)
+}
+
+let tạo biến mới cho mỗi vòng lặp.
+
+Kết quả đúng:
+
+Item 0
+Item 1
+Item 2
+Item 3
+Item 4
+
+Code sau khi sửa hoàn chỉnh
+function tinhGiaGiamGia(giaBan, phanTramGiam) {
+
+    giaBan = Number(giaBan);
+    phanTramGiam = Number(phanTramGiam);
+
+    // Validate dữ liệu
+    if (isNaN(giaBan) || isNaN(phanTramGiam)) {
+        return "Input không hợp lệ";
+    }
+
+    if (giaBan < 0) {
+        return "Giá bán không hợp lệ";
+    }
+
+    if (phanTramGiam < 0 || phanTramGiam > 100) {
+        return "Phần trăm giảm không hợp lệ";
+    }
+
+    const giamGia = giaBan * phanTramGiam / 100;
+
+    let giaSauGiam = giaBan - giamGia;
+
+    if (giaSauGiam === 0) {
+        console.log("Sản phẩm miễn phí!");
+    }
+
+    return giaSauGiam;
+}
+
+// Test
+const gia = tinhGiaGiamGia(100000, 20);
+console.log("Giá sau giảm: " + gia + "đ");
+
+const gia2 = tinhGiaGiamGia(50000, 110);
+console.log("Giá: " + gia2);
+
+// Sửa var -> let
+for (let i = 0; i < 5; i++) {
+    setTimeout(function () {
+        console.log("Item " + i);
+    }, 1000);
+}
+
 
