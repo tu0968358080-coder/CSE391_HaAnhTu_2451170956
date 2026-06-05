@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyboard Navigation App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="app-header">
+        <h1>Keyboard Shortcuts Gallery</h1>
+        <p>Bấm <kbd>Ctrl</kbd> + <kbd>K</kbd> để mở Command Palette</p>
+    </header>
+
+    <main class="main-content">
+        <section class="gallery-container" aria-label="Bộ sưu tập ảnh">
+            <div class="slideshow-controls">
+                <button id="prevBtn" class="control-btn" aria-label="Ảnh trước">◀</button>
+                <button id="playPauseBtn" class="control-btn" aria-label="Tự động chạy slideshow">▶ Play</button>
+                <button id="nextBtn" class="control-btn" aria-label="Ảnh tiếp theo">▶</button>
+            </div>
+            
+            <div id="galleryViewer" class="gallery-viewer" tabindex="0" aria-label="Trình xem ảnh. Sử dụng phím mũi tên trái phải hoặc phím số từ 1 đến 9 để điều hướng.">
+                <img id="mainImage" src="" alt="">
+                <div id="imageCaption" class="image-caption"></div>
+                <div id="imageIndexBadge" class="image-badge"></div>
+            </div>
+
+            <div id="thumbnailList" class="thumbnail-list" role="listbox" aria-label="Danh sách ảnh thu nhỏ"></div>
+        </section>
+    </main>
+
+    <div id="commandPalette" class="palette-overlay" role="dialog" aria-modal="true" aria-label="Hộp lệnh hệ thống" aria-hidden="true">
+        <div class="palette-content">
+            <div class="palette-search-wrapper">
+                <input type="text" id="paletteInput" placeholder="Nhập lệnh cần tìm... (Ví dụ: Play, Next, Light)" aria-label="Tìm kiếm lệnh hệ thống" autocomplete="off">
+            </div>
+            <ul id="paletteResults" class="palette-results" role="listbox" aria-label="Kết quả tìm kiếm lệnh"></ul>
+            <div class="palette-footer">
+                <span><kbd>↑↓</kbd> Di chuyển</span>
+                <span><kbd>Enter</kbd> Chọn</span>
+                <span><kbd>Esc</kbd> Đóng</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
