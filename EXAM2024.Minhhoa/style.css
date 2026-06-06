@@ -1,0 +1,104 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa;
+    padding: 40px 0;
+}
+
+.task-container {
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+.task-card-wrapper {
+    background-color: #f4f6fa;
+    border: 2px solid #5551ff;
+    border-radius: 16px;
+    padding: 35px;
+    margin-bottom: 35px;
+}
+
+.btn-add-task {
+    background-color: #5551ff;
+    color: white;
+    border: none;
+    border-radius: 14px;
+    padding: 10px 24px;
+    font-weight: 500;
+    box-shadow: 0 4px 14px rgba(85, 81, 255, 0.3);
+    transition: all 0.3s;
+}
+.btn-add-task:hover {
+    background-color: #403bd6;
+    color: white;
+}
+
+.task-item {
+    background-color: white;
+    border-radius: 25px;
+    padding: 18px 30px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.01);
+}
+.task-item:last-child {
+    margin-bottom: 0;
+}
+
+.col-task { flex: 3; }
+.col-priority { flex: 2; }
+.col-status { flex: 2; text-align: left; }
+.col-progress { flex: 1; text-align: left; }
+.col-actions { flex: 1.5; display: flex; justify-content: flex-end; gap: 20px; }
+
+.label-title {
+    font-size: 0.85rem;
+    color: #a0aec0;
+    margin-bottom: 4px;
+    font-weight: 400;
+}
+.task-name {
+    font-weight: 500;
+    color: #1e293b;
+    margin-bottom: 0;
+    font-size: 1.05rem;
+}
+
+.priority-high { color: #e53e3e; font-weight: 600; }
+.priority-medium { color: #ecc94b; font-weight: 600; }
+.priority-low { color: #38a169; font-weight: 600; }
+
+.status-badge {
+    background-color: #f1f5f9;
+    color: #64748b;
+    padding: 8px 20px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: inline-block;
+}
+
+.progress-circle {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    border: 2px solid #e2e8f0;
+    display: inline-block;
+    vertical-align: middle;
+}
+.progress-circle.done {
+    border-color: #5551ff;
+}
+.progress-circle.in-progress {
+    border: 2px solid #e2e8f0;
+    border-top-color: #5551ff;
+    border-right-color: #5551ff;
+    transform: rotate(45deg);
+}
+
+.action-icon {
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+.icon-edit { color: #0f172a; }
+.icon-edit:hover { color: #475569; }
+.icon-delete { color: #e11d48;
