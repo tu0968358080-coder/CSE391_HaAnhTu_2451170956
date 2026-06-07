@@ -1,0 +1,10 @@
+@import 'variables';
+@import 'mixins';
+@import 'components';
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: $font-primary;
+  background-color: #ffffff;
+}
